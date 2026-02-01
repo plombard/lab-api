@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS items (
+    id UUID PRIMARY KEY DEFAULT uuidv4(),
+    created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
