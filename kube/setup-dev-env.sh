@@ -46,12 +46,5 @@ curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.31.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 
-# 6. Lancement de la Registry Docker locale
-echo "--- 🗄️ Lancement de la Registry locale (port 5000) ---"
-sudo systemctl enable --now docker
-# On attend que le socket docker soit prêt
-sleep 2
-sudo docker run -d --restart always --name local-registry -p 5000:5000 docker.io/library/registry:3.0.0
-
 echo "--- ✅ Configuration terminée avec succès ! ---"
 echo "Utilise 'newgrp docker' pour activer les droits Docker immédiatement sans te reconnecter."
