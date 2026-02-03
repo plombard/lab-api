@@ -17,10 +17,10 @@ spec:
           image: localhost:5001/lab-api:v2
           resources:
             requests:
-              cpu: "10m" # 5% d'un coeur (très bas pour déclencher le scale facilement)
+              cpu: "50m" # 5% d'un coeur (très bas pour déclencher le scale facilement)
               memory: "64Mi"
             limits:
-              cpu: "50m"
+              cpu: "200m"
               memory: "128Mi"
           ports:
             - containerPort: 8080
