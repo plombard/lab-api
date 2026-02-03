@@ -15,4 +15,4 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 10 # Scale dès que la conso dépasse 5m (10% de 50m)
+          averageUtilization: 5 # Scale dès que la conso dépasse 5m (10% de 50m)
