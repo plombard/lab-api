@@ -70,10 +70,10 @@ kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
-  # port forward 80 on the host to 30950 on this node
+  # port forward 8080 on the host to 30950 on this node
   extraPortMappings:
   - containerPort: 30950
-    hostPort: 80
+    hostPort: 8080
 - role: worker
 EOF
 

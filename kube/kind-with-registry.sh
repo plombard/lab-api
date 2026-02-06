@@ -25,10 +25,10 @@ kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
-  # port forward 80 on the host to 30950 on this node
+  # port forward 8080 on the host to 30950 on this node
   extraPortMappings:
   - containerPort: 30950
-    hostPort: 80
+    hostPort: 8080
 - role: worker
 EOF
 
@@ -68,3 +68,9 @@ data:
     help: "https://kind.sigs.k8s.io/docs/user/local-registry/"
 EOF
 
+# 6. Installer le Metrics Server
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+# 7. Patcher pour Kind (évite les erreurs de certificats TLS)
+kubectl patch deployment metrics-server -n kube-system --type='json' \
+  -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}]'
